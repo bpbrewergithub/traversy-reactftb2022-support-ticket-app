@@ -22,6 +22,9 @@ app.get('/', (req, res) => {
 // Routes from 'userRoutes' file
 app.use('/api/users', require('./routes/userRoutes'));
 
+// Routes from 'ticketRoutes' file
+app.use('/api/tickets', require('./routes/ticketRoutes'));
+
 app.use(errorHandler);
 
 // Listen
