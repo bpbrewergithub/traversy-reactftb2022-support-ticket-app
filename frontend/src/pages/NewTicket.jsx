@@ -11,7 +11,7 @@ const NewTicket = () => {
   // Get the user from the global state
   const { user } = useSelector((state) => state.auth);
   const { isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.ticket
+    (state) => state.tickets
   );
 
   // Set the local state
