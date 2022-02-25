@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTicket, reset, closeTicket } from '../features/tickets/ticketSlice';
+import { getTicket, closeTicket } from '../features/tickets/ticketSlice';
+import { getNotes, reset as notesReset } from '../features/notes/noteSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -11,6 +12,10 @@ import Spinner from '../components/Spinner';
 const Ticket = () => {
   const { ticket, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.tickets
+  );
+
+  const { notes, isLoading: notesIsLoading } = useSelector(
+    (state) => state.notes
   );
 
   // const params = useParams();
@@ -24,6 +29,7 @@ const Ticket = () => {
     }
 
     dispatch(getTicket(ticketId));
+    dispatch(getNotes(ticketId));
     // eslint-disable-next-line
   }, [isError, message, ticketId]);
 
