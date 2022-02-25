@@ -40,9 +40,6 @@ const NewTicket = () => {
               value={product}
               onChange={(e) => setProduct(e.target.value)}
             >
-              <option value='' disabled selected hidden>
-                Please select
-              </option>
               <option value='iPhone'>iPhone</option>
               <option value='Macbook Pro'>Macbook Pro</option>
               <option value='iMac'>iMac</option>
