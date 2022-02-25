@@ -9,7 +9,7 @@ import BackButton from '../components/BackButton';
 import TicketItem from '../components/TicketItem';
 
 const Tickets = () => {
-  const { tickets, isLoading, isSuccess, isError } = useSelector(
+  const { tickets, isLoading, isSuccess } = useSelector(
     (state) => state.tickets
   );
 
