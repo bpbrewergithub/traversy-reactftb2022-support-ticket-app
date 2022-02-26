@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 // Components
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
+import NoteItem from '../components/NoteItem';
 
 const Ticket = () => {
   const { ticket, isLoading, isSuccess, isError, message } = useSelector(
@@ -40,7 +41,7 @@ const Ticket = () => {
     navigate('/tickets');
   };
 
-  if (isLoading) {
+  if (isLoading || notesIsLoading) {
     return <Spinner />;
   }
 
@@ -67,7 +68,14 @@ const Ticket = () => {
           <h3>Description of Issue</h3>
           <p>{ticket.description}</p>
         </div>
+        <h2>Notes</h2>
       </header>
+
+      {notes.length === 0 ? (
+        <h4>No notes for this ticket</h4>
+      ) : (
+        notes.map((note) => <NoteItem key={note._id} note={note} />)
+      )}
 
       {ticket.status !== 'closed' && (
         <button onClick={onTicketClose} className='btn btn-block btn-danger'>
